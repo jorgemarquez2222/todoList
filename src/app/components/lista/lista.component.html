@@ -1,0 +1,12 @@
+<section>
+    <ul>
+        <li *ngFor="let tarea of _listadoTareas(); let i = index">
+            <input *ngIf="tarea.editando" [(ngModel)]="tarea.nombre" type="text">
+            <button *ngIf="tarea.editando" (click)="guardarTarea(tarea.id, tarea.nombre)"> Guardar</button>
+            <span *ngIf="!tarea.editando">{{tarea.nombre}} </span>
+            <button *ngIf="!tarea.editando" (click)="eliminar(tarea)">Eliminar</button>
+            <button *ngIf="!tarea.editando" (click)="editar(tarea.id)">Editar</button>
+        </li>
+    </ul>
+
+</section>
