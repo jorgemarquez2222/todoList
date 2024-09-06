@@ -1,12 +1,11 @@
-<section>
-    <ul>
-        <li *ngFor="let tarea of _listadoTareas(); let i = index">
-            <input *ngIf="tarea.editando" [(ngModel)]="tarea.nombre" type="text">
-            <button *ngIf="tarea.editando" (click)="guardarTarea(tarea.id, tarea.nombre)"> Guardar</button>
-            <span *ngIf="!tarea.editando">{{tarea.nombre}} </span>
-            <button *ngIf="!tarea.editando" (click)="eliminar(tarea)">Eliminar</button>
-            <button *ngIf="!tarea.editando" (click)="editar(tarea.id)">Editar</button>
-        </li>
-    </ul>
-
-</section>
+<p>lista works!</p>
+<ul>
+    <li *ngFor="let task of _tasks()" >
+        
+        <span *ngIf="!task.editando"> {{task.name}}</span>
+        <input *ngIf="task.editando" type="text" [(ngModel)]="task.name">
+        <button *ngIf="task.editando" (click)="saveTask(task.id, task.name)">Guardar cambios</button>
+        <button *ngIf="!task.editando" (click)="updateTask(task.id, task.name)">Actualizar</button>
+        <button *ngIf="!task.editando" (click)="deleteTask(task.id)">Elimianr</button>
+    </li>
+</ul>

@@ -1,34 +1,34 @@
+import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'; // Importa CommonModule
-import { Tarea } from '../../interfaces';
-import { ConectionsService } from '../../services/conections.service';
+import { Task } from '../../interfaces';
+import { ConnectionsService } from '../../services/connections.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-lista',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './lista.component.html',
   styleUrl: './lista.component.css'
 })
 export class ListaComponent {
 
-  _listadoTareas = signal<Tarea[]>([]);
+  _tasks = signal<Task[]>([]);
 
-  constructor(private serviceConnections: ConectionsService ){
-    this._listadoTareas = this.serviceConnections.listadoTareas;
+  constructor(private _connectionsService: ConnectionsService) {
+    this._tasks = this._connectionsService.tasks;
   }
 
-  eliminar(tarea: Tarea){
-    this.serviceConnections.eliminarTarea(tarea.id)
+  updateTask(id: string, name: string) {
+    this._connectionsService.updateTask(id, name)
   }
 
-  editar(id: string){
-    this.serviceConnections.editarTarea(id)
+  deleteTask(id: string) { 
+    this._connectionsService.deleteTask(id)
   }
 
-  guardarTarea(id: string, nombre: string){
-    this.serviceConnections.guardarTarea(id, nombre)
+  saveTask(id: string, name: string ){
+    this._connectionsService.saveTask(id)
   }
 
 }

@@ -1,6 +1,5 @@
-export interface Tarea {
-    nombre: string
+export interface Task{
     id: string
+    name: string
     editando: boolean
-  }
-  
+}

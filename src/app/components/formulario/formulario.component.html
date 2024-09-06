@@ -1,0 +1,7 @@
+<p>formulario works!</p>
+
+<form (ngSubmit)="addTask($event)" [formGroup]="form">
+    <input type="text" formControlName="tarea">
+    <button type="submit" >Guardar</button>
+    <button type="button" (click)="reset()">Resetear</button>
+</form>
