@@ -10,10 +10,11 @@ import { CommonModule } from '@angular/common';
   templateUrl: './listado.component.html',
   styleUrl: './listado.component.css'
 })
+
 export class ListadoComponent {
   _listadoTareas = signal<Tarea[]>([]);
-  
-  constructor(private servideConnections: ConectionsService ){
+
+  constructor(private servideConnections: ConectionsService) {
     this._listadoTareas = this.servideConnections.listadoTareas;
   }
 }

@@ -16,9 +16,9 @@ import { ListadoComponent } from '../listado/listado.component';
 
 export class FomularioComponent {
   _listadoTareas = signal<Tarea[]>([]);
-  formulario : FormGroup = new FormGroup({});
+  formulario: FormGroup = new FormGroup({});
 
-  constructor(private servideConnections: ConectionsService ){
+  constructor(private servideConnections: ConectionsService) {
     this._listadoTareas = this.servideConnections.listadoTareas;
     this.formulario = new FormGroup({
       tarea: new FormControl('')
@@ -31,7 +31,7 @@ export class FomularioComponent {
     this.formulario.get('tarea')?.reset()
   }
 
-  reset(){
+  reset() {
     this.servideConnections.reset();
   }
 }

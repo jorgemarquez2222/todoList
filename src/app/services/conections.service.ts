@@ -37,7 +37,7 @@ export class ConectionsService {
     this._listadoTareas.update((ts: Tarea[]) => ts.filter(t => t.id !== id))
   }
 
-  reset(){
+  reset() {
     this._listadoTareas.set([])
   }
 }

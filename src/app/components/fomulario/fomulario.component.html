@@ -3,11 +3,11 @@
         <h1>Fomulario</h1>
         <input type="text" formControlName="tarea">
         <button type="submit">Guardar</button>
-        <button (click)="reset()" >Resetear tareas</button>
+        <button (click)="reset()">Resetear tareas</button>
     </form>
     {{ _listadoTareas() | json}}
 
-    <app-listado /> 
+    <app-listado />
 </section>
 <section>
     <app-lista />
