@@ -30,7 +30,7 @@ import { JsonparsePipe } from '../../pipes/jsonparse.pipe';
 export class ProductsComponent implements OnInit {
 
   products$ = new Observable<Product[]>();
-  productsClone: Product[] = []
+  cloneProds: Product[] = []
 
   constructor(
     private productService: ProductsService
@@ -43,16 +43,16 @@ export class ProductsComponent implements OnInit {
   getProducts() {
     this.products$ = this.productService.products;
     this.products$.subscribe((products: Product[]) => {
-      this.productsClone = products
+      this.cloneProds = products
     })
   }
 
   filtrar(event: Event) {
     const inputElement = event.target as HTMLInputElement;
-    const filterValue = inputElement.value.toLowerCase();
-    this.products$ = new BehaviorSubject<Product[]>(
-      this.productsClone.filter((product: Product) =>
-      product.title.toLowerCase().includes(filterValue)
-    ))
+    const value = inputElement.value.toLowerCase();
+    const resultFilter = this.cloneProds.filter((prod: Product) =>
+      prod.title.toLowerCase().includes(value)
+    )
+    this.products$ = new BehaviorSubject<Product[]>(resultFilter)
   }
 }
