@@ -1,0 +1,13 @@
+<input type="text" formControlName="inp"  (input)="filtrar($event)" >
+<div class="principal-container">
+    <mat-card *ngFor="let product of products$ | async" class="example-card" appearance="outlined">
+        <img mat-card-image src="{{product.image}}" alt="Photo of a Shiba Inu" class="responsive-image">
+        <mat-card-content>
+            <p>{{product.title}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
